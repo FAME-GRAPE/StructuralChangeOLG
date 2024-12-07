@@ -1,0 +1,55 @@
+! SWITCHES
+0 	\\ switch_reform 		! 0 = base transition, 1 = main LSRA (baseline + reform + welfare change)
+0 	\\ switch_partial_eq_cal 	! 0 = full transition model, 1 = decomposition of variance and expected value effect for welafare 2 (see file partial_eq_decomposition)
+1 	\\ switch_run_1 		! 0 = don't run old steady state; 1 = run old steady state
+1 	\\ switch_run_2 		! 0 = don't run new steady state; 1 = run new steady state
+1 	\\ switch_run_t 		! 0 = don't run transition; 1 = run transition
+0 	\\ switch_type_1 		! initial ss: 0 = DB; 1 = DC
+0 	\\ switch_type_2 		! final   ss: 0 = DB; 1 = DC
+0 	\\ switch_param_1 		! 0 = with old parameters; 1 = with new parameters  
+1 	\\ switch_param_2 		! 0 = with old parameters; 1 = with new parameters  
+1 	\\ switch_vf 			! 0 = analitical solution, 1 endogenous grid
+0 	\\ switch_labor_choice 		! 0 = no labor choice (phi = 1) , 1 =  labor choice determined by 0 < phi < 1
+1 	\\ switch_mortality 		! 0 = no mortality on transition, 1 = mortality according to data, 3 = like in first steady?
+0 	\\ switch_unstable_dem_ss 	! 0 = demography  in steady state is stable (fertility rate = 2), unstable demography in steady state     
+1 	\\ swich_cohort_ps 		! 0 = points pension system like us, 1 = the same benefits within a whole cohorts 
+1 	\\ switch_see_ret 		! 0 = agent sees no tax-benefit link; 1 = agent sees implicit savings
+0d0 	\\ swich_fix_labor 		! 0 = endogenous labor, other number (=0.33 for US) fix labor force participation
+0 	\\ swich_g_const 		! 0 = in bseline share GDP in ref constant per eff unit of labor, 1 = in per capita, 2 = as a share of gdp, 3 in bseline share GDP in ref constant as a number
+1 	\\ gamma_switch			! 0 = constant gamma, 1 = gamma from data		 	! 0 = gamma = const = 2%, 1 =  gamma = 2 for i < 20 & gamma = 1.5 for i > 40 & linear in the meantime 
+0	\\ gamma_corrector		! 1 = corrector is on
+0 	\\ switch_reduce_pension
+0	\\ j_young_bar			! number of cohorts which do not save (doesn't work yet)
+0 	\\ switch_N_from_pi             ! 1 = generate population from mortality rates
+3	\\ omega_switch			! 0 = both changes over time, 1 = share changes over time, 2 = margins changes over time, 3 = none changes over time
+0	\\ demography_switch		! 0 = demography as in period 1, 1 = demography from data
+0	\\ bequest_all_switch           ! 0 = bequests are devided among all kohorts, 1 = no bequsts for j == 1
+10 	\\ switch_residual_read		! 0 = upsil, 1 = taxC, 2 = taxL, 3 = taxK, 4 = cont, 6 = frlC, 7 = frlC, 8 = btax, 9 = g, 10 = g in ss1 then taxC
+
+! PARAMETERS
+! GOV
+1d0 		\\ valor_share 			! % of growth rate, to ma być 25%, jednak w REV mielismy 0.2 wiec na razie jest tyle
+0.010778d0	\\ tL_ss			! if switch_reduce_pension == 0 (https://www.sciencedirect.com/science/article/abs/pii/0304393294900213 + https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I1#)
+0.100333d0 	\\ tk_ss			! if switch_reduce_pension == 0 (https://www.sciencedirect.com/science/article/abs/pii/0304393294900213 + https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I1#)
+0.120444d0 	\\ tc_ss			! if switch_reduce_pension == 0 (https://www.sciencedirect.com/science/article/abs/pii/0304393294900213 + https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I1#)
+0.6d0 		\\ debt_constr			! divided by zbar in code
+0.0d0 		\\ tc_growth
+0.0d0 		\\ up_tc
+0.17d0 		\\ g_share_ss
+0.17d0 		\\ g_share_ss_2
+! OTHERS
+2d0 		\\ theta			! 1 = log; parameter in CRRA utility
+0.6d0 		\\ up_t
+! SOCIAL SECURITY
+1d0		\\ beta
+0.339411255d0	\\ rho1			! size of common component of social security (https://www.zus.pl/swiadczenia/kapital-poczatkowy/od-czego-zalezy-kwota-kapitalu-poczatkowego)
+0.52d0		\\ rho2				! size of individual component of social security
+-----		\\ depr 			! computed in code
+0.9755d0	\\ delta			! discount factor, raised to the power zbar in code
+0.355d0		\\ phi
+0.8102d0	\\ rho_1			! size of social security in 1st steady
+0.8102d0	\\ rho_2			! size of social security in 2nd steady
+0.052d0		\\ t1_ss_old			! https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I1#
+0.052d0		\\ t1_ss_new			! https://stats.oecd.org/index.aspx?DataSetCode=TABLE_I1#
+! SHOCKS
+! High&West Low&West High&East Low&East
